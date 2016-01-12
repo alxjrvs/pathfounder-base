@@ -17,6 +17,7 @@ gem 'rspec-rails', group: :test
 gem 'factory_girl_rails', group: :test
 
 group :development, :test do
+  gem 'capybara'
   gem 'pry-byebug'
   gem 'pry-remote'
   gem 'pry-rails'

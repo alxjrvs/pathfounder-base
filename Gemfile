@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.3'
+ruby '2.3.0'
 
 gem 'rails', '4.2.5'
 gem 'pg', '~> 0.15'
@@ -13,8 +13,7 @@ gem 'active_model_serializers', '~> 0.8.0'
 gem 'awesome_print'
 gem 'rack-cors', :require => 'rack/cors'
 
-gem 'rspec-rails', group: :test
-gem 'factory_girl_rails', group: :test
+gem 'simple_form'
 
 group :development, :test do
   gem 'capybara'
@@ -29,4 +28,9 @@ group :development do
   gem 'spring'
 end
 
-gem "codeclimate-test-reporter", group: :test, require: nil
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem "codeclimate-test-reporter", require: nil
+end
+

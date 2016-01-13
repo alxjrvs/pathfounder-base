@@ -6,9 +6,9 @@ describe NullSkillList do
   end
 
   Skills::ALL.each do |sk|
-    describe ".#{sk}" do
+    describe ".#{sk}_val" do
       it "returns a NullSkill" do
-        expect(@list.send(sk).class).to eq NullSkill
+        expect(@list.send("#{sk}_val")).to eq 0
       end
     end
   end

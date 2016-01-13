@@ -37,7 +37,7 @@ class CharacterSheet
 
   #Class
   def favored_class
-    return levels.first.pf_class if levels.first.present?
+    return levels.first.pf_class if levels.first&.pf_class.present?
     NullPfClass.new
   end
 

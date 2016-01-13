@@ -2,9 +2,34 @@ Your Character!
 
 - name = @character.sheet.name.present? ? @character.sheet.name : "(No Name!)"
 - pf_class = @character.sheet.favored_class.present? ? @character.sheet.favored_class.class.to_s.titleize : "(No Class!)"
+- race = @character.sheet.race.present? ? @character.sheet.race.class.to_s.titleize : "(No Race!)"
+
+%h1 Basic Info
 
 = "Name: #{name}"
 = "Class: #{pf_class}"
+= "Race: #{race}"
+
+%h1 STATS
+
+= "STR: #{@character.sheet.stats.strength.value}/#{@character.sheet.stats.strength.modifier}"
+= "DEX: #{@character.sheet.stats.dexterity.value}/#{@character.sheet.stats.dexterity.modifier}"
+= "CON: #{@character.sheet.stats.constitution.value}/#{@character.sheet.stats.constitution.modifier}"
+= "WIS: #{@character.sheet.stats.wisdom.value}/#{@character.sheet.stats.wisdom.modifier}"
+= "INT: #{@character.sheet.stats.intelligence.value}/#{@character.sheet.stats.intelligence.modifier}"
+= "CHA: #{@character.sheet.stats.charisma.value}/#{@character.sheet.stats.charisma.modifier}"
+
+%h1 SKILLS
+
+- if @character.skill_list.present?
+
+  - Skills::ALL.each do |skill|
+    - skill = @character.sheet.skills.send(skill)
+    - if skill.point_value > 0
+      = "#{skill.name.to_s.titleize}: #{skill.point_value}" 
+
+- else
+  (No Skills!)
 
 = link_to "Edit Character Info", edit_general_info_character_path(@character)
 = link_to "Edit Class", edit_pf_class_character_path(@character)

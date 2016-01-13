@@ -1,0 +1,4 @@
+= form_tag update_race_character_path(@character), method: "post" do
+  = label_tag :chosen_race, "Choose your Race:" 
+  = select_tag(:chosen_race, options_for_select(["Human", "human"]))
+  = submit_tag "Update Character"

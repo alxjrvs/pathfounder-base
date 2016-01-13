@@ -13,6 +13,10 @@ class NullFeatList
     nil
   end
 
+  def list
+    []
+  end
+
   def feat_1
     nil
   end

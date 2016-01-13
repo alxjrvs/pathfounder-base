@@ -10,6 +10,7 @@ class Human < ActiveRecord::Base
   languages [:common], high: [:all_regular]
 
   alias_method :mods_attr, :mods
+
   def mods
     @_mods ||= begin
      (self.mods_attr + [ability_bonus_mod]).compact

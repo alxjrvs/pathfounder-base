@@ -1,18 +1,11 @@
 class StatCalculator
-  STATS =
-    :constitution,
-    :charisma,
-    :intelligence,
-    :wisdom,
-    :strength,
-    :dexterity
 
   def initialize(stat_block:, mods:)
     @stat_block = stat_block
     @mods = mods
   end
 
-  STATS.each do |stat|
+  Stats::ALL.each do |stat|
     define_method "#{stat}" do
       Stat.new(stat, calculated_value_for(stat))
     end
@@ -20,7 +13,7 @@ class StatCalculator
 
   private
 
-  STATS.each do |stat|
+  Stats::ALL.each do |stat|
     define_method "#{stat}_persisted" do
       stat_block.send("#{stat}_val").to_i
     end

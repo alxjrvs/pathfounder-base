@@ -23,7 +23,7 @@ feature 'Editing Race' do
 
     click_button "Update Character"
 
-    expect(page).to have_content "Human"
+    expect(page).to have_content "STR: 2/-4"
   end
 
 end

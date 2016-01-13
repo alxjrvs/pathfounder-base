@@ -35,8 +35,6 @@ feature 'Character Display' do
       end
 
       scenario 'and sees the name on the show page' do
-        visit character_path character
-
         expect(page).to have_content "Acrobatics: 1"
         expect(page).to have_content "Woodworking: 1"
       end
@@ -68,5 +66,4 @@ feature 'Character Display' do
       end
     end
   end
-
 end

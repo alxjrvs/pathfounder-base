@@ -45,6 +45,9 @@ class CharactersController < ApplicationController
       new_race = chosen_race.create
       character.update_attributes(race: new_race)
     end
+    if character.race.class == Human && params[:human_ability_bonus].present?
+      character.race.update_attributes(ability_bonus: params[:human_ability_bonus])
+    end
     redirect_to character_path character
   end
 

@@ -1,0 +1,4 @@
+= form_tag update_pf_class_character_path(@character), method: "post" do
+  = label_tag :chosen_class, "Choose your Class:" 
+  = select_tag(:chosen_class, options_for_select(["Fighter", "fighter"]))
+  = submit_tag "Update Character"

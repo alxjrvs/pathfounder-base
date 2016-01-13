@@ -1,11 +1,15 @@
 Your Character!
 
-= @character
+- name = @character.sheet.name.present? ? @character.sheet.name : "(No Name!)"
+- pf_class = @character.sheet.favored_class.present? ? @character.sheet.favored_class.class.to_s.titleize : "(No Class!)"
 
-= link_to "Edit Character Info", edit_character_general_info_path(character_id: @character)
-= link_to "Edit Class", edit_character_pf_class_path(character_id: @character)
-= link_to "Edit Race", edit_character_race_path(character_id: @character)
-= link_to "Edit Stats", edit_character_stat_path(character_id: @character)
-= link_to "Edit Skills", edit_character_skill_path(character_id: @character)
-= link_to "Edit Feats", edit_character_feat_path(character_id: @character)
-= link_to "Edit Items", edit_character_item_path(character_id: @character)
+= "Name: #{name}"
+= "Class: #{pf_class}"
+
+= link_to "Edit Character Info", edit_general_info_character_path(@character)
+= link_to "Edit Class", edit_pf_class_character_path(@character)
+= link_to "Edit Race", edit_race_character_path(@character)
+= link_to "Edit Stats", edit_stats_character_path(@character)
+= link_to "Edit Skills", edit_skills_character_path(@character)
+= link_to "Edit Feats", edit_feats_character_path(@character)
+= link_to "Edit Items", edit_items_character_path(@character)

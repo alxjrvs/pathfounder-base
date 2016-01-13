@@ -3,44 +3,46 @@ require 'rails_helper'
 feature 'Character Display' do
 
   context 'a Guest views their character' do
-    context "with a class" do
+    context '(Which is filled out!)' do
+      let(:name) { "Ragnar" }
+      let(:race) { create :human, ability_bonus: :strength }
+      let(:skill_list) { create :skill_list } 
+      let(:stat_block) { create :stat_block } 
+      let!(:character) do
+        create :character, 
+          skill_list: skill_list, 
+          stat_block: stat_block,
+          race: race,
+          name: name
+      end
       let(:fighter) { create :fighter } 
-      let!(:character) { create :empty_character }
       let!(:level) { create :level, character: character, pf_class: fighter } 
-      scenario 'and sees the class on the show page' do
-        visit character_path character
 
+      before do
+        visit character_path character
+      end
+
+      scenario 'and sees their character\'s name.' do
+        expect(page).to have_content name
+      end
+
+      scenario 'and sees their character\'s class.' do
         expect(page).to have_content "Fighter"
       end
-    end
 
-    context "with a race" do
-      let(:race) { create :human }
-      let!(:character) { create :empty_character, race: race }
-      scenario 'and sees the race on the show page' do
-        visit character_path character
-
+      scenario 'and sees their character\'s race.' do
         expect(page).to have_content "Human"
       end
-    end
 
-    context "with skills" do
-      let(:skill_list) { create :skill_list } 
-      let!(:character) { create :empty_character, skill_list: skill_list }
       scenario 'and sees the name on the show page' do
         visit character_path character
 
         expect(page).to have_content "Acrobatics: 1"
         expect(page).to have_content "Woodworking: 1"
       end
-    end
-    context "with stats" do
-      let(:stat_block) { create :stat_block } 
-      let!(:character) { create :empty_character, stat_block: stat_block }
-      scenario 'and sees the name on the show page' do
-        visit character_path character
 
-        expect(page).to have_content "STR: 16/3"
+      scenario 'and sees their character\'s stats' do
+        expect(page).to have_content "STR: 18/4"
         expect(page).to have_content "DEX: 12/1"
         expect(page).to have_content "CON: 14/2"
         expect(page).to have_content "WIS: 7/-2"
@@ -49,19 +51,9 @@ feature 'Character Display' do
       end
     end
 
-    context "with a name" do
-      let(:name) { "Ragnar" }
-      let!(:character) { create :empty_character, name: name }
-      scenario 'and sees the name on the show page' do
-        visit character_path character
-
-        expect(page).to have_content name
-      end
-    end
-
-    context "with no information" do
+    context "(with nothing filled out)" do
       let!(:character) { create :empty_character }
-      scenario 'and sees no info' do
+      scenario 'and sees nil info' do
         visit character_path character
         expect(page).to have_content "(No Name!)"
         expect(page).to have_content "(No Class!)"

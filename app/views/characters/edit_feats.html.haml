@@ -1,0 +1,4 @@
+=simple_form_for @feat_list, url: update_feats_character_path(@character), method: 'post' do |f|
+  = f.input :list, as: :check_boxes, collection: Feats.names 
+  = f.button :submit, "Update Character"
+

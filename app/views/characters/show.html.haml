@@ -1,40 +1,63 @@
-Your Character!
-
 - name = @character.sheet.name.present? ? @character.sheet.name : "(No Name!)"
 - pf_class = @character.sheet.favored_class.present? ? @character.sheet.favored_class.class.to_s.titleize : "(No Class!)"
 - race = @character.sheet.race.present? ? @character.sheet.race.class.to_s.titleize : "(No Race!)"
 
-%h1 Basic Info
+.character-display
+  .basic-info
+    .title
+      %h1= "#{name}, the #{race} #{pf_class}"
+    .subtitle
+      %h3= "Level 1 - alignment goes here" 
 
-= "Name: #{name}"
-= "Class: #{pf_class}"
-= "Race: #{race}"
 
-%h1 STATS
+  .stats.row
+    .col.s12.m6
+      %table.striped
+        %tbody
+          %tr
+            %td= "STR: #{@character.sheet.stats.strength.value}/#{@character.sheet.stats.strength.modifier}" 
+          %tr
+            %td= "DEX: #{@character.sheet.stats.dexterity.value}/#{@character.sheet.stats.dexterity.modifier}" 
+          %tr
+            %td= "CON: #{@character.sheet.stats.constitution.value}/#{@character.sheet.stats.constitution.modifier}" 
+          %tr
+            %td= "WIS: #{@character.sheet.stats.wisdom.value}/#{@character.sheet.stats.wisdom.modifier}" 
+          %tr
+            %td= "INT: #{@character.sheet.stats.intelligence.value}/#{@character.sheet.stats.intelligence.modifier}" 
+          %tr
+            %td= "CHA: #{@character.sheet.stats.charisma.value}/#{@character.sheet.stats.charisma.modifier}" 
 
-= "STR: #{@character.sheet.stats.strength.value}/#{@character.sheet.stats.strength.modifier}"
-= "DEX: #{@character.sheet.stats.dexterity.value}/#{@character.sheet.stats.dexterity.modifier}"
-= "CON: #{@character.sheet.stats.constitution.value}/#{@character.sheet.stats.constitution.modifier}"
-= "WIS: #{@character.sheet.stats.wisdom.value}/#{@character.sheet.stats.wisdom.modifier}"
-= "INT: #{@character.sheet.stats.intelligence.value}/#{@character.sheet.stats.intelligence.modifier}"
-= "CHA: #{@character.sheet.stats.charisma.value}/#{@character.sheet.stats.charisma.modifier}"
+  .skills.row
+    .col.s12.m6
+      - if @character.skill_list.present?
+        %table.striped
+          %tbody
+            - Skills::ALL.each do |skill|
+              - skill = @character.sheet.skills.send(skill)
+              - if skill.point_value > 0
+                %tr
+                  %td= "#{skill.name.to_s.titleize}: #{skill.point_value}" 
 
-%h1 SKILLS
 
-- if @character.skill_list.present?
+      - else
+        (No Skills!)
 
-  - Skills::ALL.each do |skill|
-    - skill = @character.sheet.skills.send(skill)
-    - if skill.point_value > 0
-      = "#{skill.name.to_s.titleize}: #{skill.point_value}" 
+    .feats.row
+      .col.m12
+        - if @character.feat_list&.list&.count.to_i > 0 
+          %table.striped
+            %tbody
+              - @character.feat_list.list.each do |feat|
+                %tr
+                  %td= "#{feat}" 
+        - else
+          (No Feats!)
 
-- else
-  (No Skills!)
 
-= link_to "Edit Character Info", edit_general_info_character_path(@character)
-= link_to "Edit Class", edit_pf_class_character_path(@character)
-= link_to "Edit Race", edit_race_character_path(@character)
-= link_to "Edit Stats", edit_stats_character_path(@character)
-= link_to "Edit Skills", edit_skills_character_path(@character)
-= link_to "Edit Feats", edit_feats_character_path(@character)
-= link_to "Edit Items", edit_items_character_path(@character)
+= link_to "Edit Character Info", edit_general_info_character_path(@character), class: "waves-effect waves-light btn"
+= link_to "Edit Class", edit_pf_class_character_path(@character), class: "waves-effect waves-light btn"
+= link_to "Edit Race", edit_race_character_path(@character), class: "waves-effect waves-light btn"
+= link_to "Edit Stats", edit_stats_character_path(@character), class: "waves-effect waves-light btn"
+= link_to "Edit Skills", edit_skills_character_path(@character), class: "waves-effect waves-light btn"
+= link_to "Edit Feats", edit_feats_character_path(@character), class: "waves-effect waves-light btn"
+= link_to "Edit Items", edit_items_character_path(@character), class: "waves-effect waves-light btn"

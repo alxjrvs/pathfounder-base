@@ -2,6 +2,10 @@ class Feats
   require 'json'
   RAW = JSON.parse(IO.binread("#{Rails.root}/app/rules/feat.json"))
 
+  def self.names
+    RAW.map { |f| f["name"] }
+  end
+
   def construct(name)
     feats.select { |f| f.name == name }.first
   end

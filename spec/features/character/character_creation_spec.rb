@@ -7,7 +7,6 @@ feature 'Character Creation' do
 
     click_button "Roll!"
 
-    expect(page).to have_content("Your Character!")
     expect(page).to have_link("Edit Character Info")
     expect(page).to have_link("Edit Class")
     expect(page).to have_link("Edit Race")

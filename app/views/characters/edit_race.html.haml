@@ -1,9 +1,13 @@
-= form_tag update_race_character_path(@character), method: "post" do
-  = label_tag :chosen_race, "Choose your Race:" 
-  = select_tag(:chosen_race, options_for_select([["Human", "human"]]))
+%h1 Choose Your Race!
 
-  - if @character.race.class == Human
-    = label_tag :human_ability_bonus, "Choose your Human Ability Bonus Stat:"
-    - dirty_array = Stats::ALL.map { |s| [s.to_s.capitalize, s] }
-    = select_tag(:human_ability_bonus, options_for_select(dirty_array))
-  = submit_tag "Update Character"
+%ul.collapsible.popout{"data-collapsible" => "accordian"}
+  %li
+    .collapsible-header
+      %p Human
+    .collapsible-body
+      = form_tag update_race_character_path(@character), method: "post" do
+        = hidden_field_tag(:chosen_race, "human")
+        - dirty_array =  Stats::ALL.map { |s| [s.to_s.capitalize, s] }
+        .input-field
+          = select_tag :human_ability_bonus, options_for_select(dirty_array), class: "browser-default", prompt: "Choose your Human Ability Bonus Stat:"
+        = submit_tag "Become a Human!", class: 'btn'

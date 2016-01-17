@@ -1,4 +1,9 @@
-= form_tag update_pf_class_character_path(@character), method: "post" do
-  = label_tag :chosen_class, "Choose your Class:" 
-  = select_tag(:chosen_class, options_for_select([["Fighter", "fighter"]]))
-  = submit_tag "Update Character"
+%h1 Choose your Race!
+%ul.collapsible.popout{"data-collapsible" => "accordian"}
+  %li
+    .collapsible-header
+      %p Fighter
+    .collapsible-body
+      = form_tag update_pf_class_character_path(@character), method: "post" do
+        = hidden_field_tag(:chosen_class, 'fighter')
+        = submit_tag "Become a Fighter!", class: 'btn'

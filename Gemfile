@@ -14,6 +14,8 @@ gem 'awesome_print'
 gem 'rack-cors', :require => 'rack/cors'
 
 gem 'simple_form'
+gem 'materialize-sass'
+
 
 group :development, :test do
   gem 'capybara'

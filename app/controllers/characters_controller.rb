@@ -71,6 +71,18 @@ class CharactersController < ApplicationController
     redirect_to character_path character
   end
 
+  def edit_feats
+    @character = character
+    @feat_list = character.feat_list || FeatList.create(character: character)
+  end
+
+  def update_feats
+    list = character.feat_list
+    list.list = new_list_params
+    list.save
+    redirect_to character_path character
+  end
+
   private
 
   def chosen_race
@@ -79,6 +91,10 @@ class CharactersController < ApplicationController
 
   def chosen_pf_class
     PFClasses::ALL[params[:chosen_class].downcase.to_sym]
+  end
+
+  def new_list_params
+    params["feat_list"]["list"].compact
   end
 
 

@@ -11,7 +11,7 @@ feature 'Editing Race' do
       visit edit_race_character_path character
       select "Strength", from: 'human_ability_bonus'
       click_button "Become a Human!"
-      expect(page).to have_content "STR: 2/-4"
+      expect(page).to have_content "Strength 2 -4"
     end
   end
 end

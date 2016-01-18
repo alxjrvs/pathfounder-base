@@ -9,23 +9,38 @@
     .subtitle
       %h3= "Level 1 - alignment goes here" 
 
-
   .stats.row
-    .col.s12.m6
+    .col.s12.m3
       %table.striped
         %tbody
           %tr
-            %td= "STR: #{@character.sheet.stats.strength.value}/#{@character.sheet.stats.strength.modifier}" 
-          %tr
-            %td= "DEX: #{@character.sheet.stats.dexterity.value}/#{@character.sheet.stats.dexterity.modifier}" 
-          %tr
-            %td= "CON: #{@character.sheet.stats.constitution.value}/#{@character.sheet.stats.constitution.modifier}" 
-          %tr
-            %td= "WIS: #{@character.sheet.stats.wisdom.value}/#{@character.sheet.stats.wisdom.modifier}" 
-          %tr
-            %td= "INT: #{@character.sheet.stats.intelligence.value}/#{@character.sheet.stats.intelligence.modifier}" 
-          %tr
-            %td= "CHA: #{@character.sheet.stats.charisma.value}/#{@character.sheet.stats.charisma.modifier}" 
+            %th Ability
+            %th Value
+            %th Modifier
+          %tr#strength-stat
+            %td.name Strength
+            %td.value= @character.sheet.stats.strength.value
+            %td.modifier= @character.sheet.stats.strength.modifier
+          %tr#dexterity-stat
+            %td.name Dexterity
+            %td.value= @character.sheet.stats.dexterity.value
+            %td.modifier= @character.sheet.stats.dexterity.modifier
+          %tr#constitution-stat
+            %td.name Constitution
+            %td.value= @character.sheet.stats.constitution.value
+            %td.modifier= @character.sheet.stats.constitution.modifier
+          %tr#wisdom-stat
+            %td.name Wisdom
+            %td.value= @character.sheet.stats.wisdom.value
+            %td.modifier= @character.sheet.stats.wisdom.modifier
+          %tr#intelligence-stat
+            %td.name Intelligence
+            %td.value= @character.sheet.stats.intelligence.value
+            %td.modifier= @character.sheet.stats.intelligence.modifier
+          %tr#charisma-stat
+            %td.name Charisma
+            %td.value= @character.sheet.stats.charisma.value
+            %td.modifier= @character.sheet.stats.charisma.modifier
 
   .skills.row
     .col.s12.m6

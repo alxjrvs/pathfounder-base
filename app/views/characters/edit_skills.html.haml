@@ -1,111 +1,14 @@
 = simple_form_for @skill_list, url: update_skills_character_path(@character), method: "post" do |f|
-  = f.input :acrobatics_val, label: "Acrobatics:", as: :integer, wrapper_html: { class: 'input-field' }
+  %p Standard Skills
+  - Skills::STANDARD.keys.each do |sk|
+    - sk = sk.to_s
+    = f.input "#{sk}_val".to_sym, label: sk.titleize, as: :integer, wrapper_html: { class: 'input-field' }
 
-  = f.input :appraise_val, label: "Appraise:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :bluff_val, label: "Bluff:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :climb_val, label: "Climb:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :craft_1_name, label: "Craft 1 Name:", wrapper_html: { class: 'input-field' }
-
-  = f.input :craft_1_val, label: "Craft 1 Value:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :craft_2_name, label: "Craft 2 Name:", wrapper_html: { class: 'input-field' }
-  
-  = f.input :craft_2_val, label: "Craft 2 Value:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :craft_3_name, label: "Craft 3 Name:", wrapper_html: { class: 'input-field' }
-
-  = f.input :craft_3_val, label: "Craft 3 Value:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :diplomancy_val, label: "Diplomacy:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :disable_device_val, label: "Disable Device:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :disguise_val, label: "Disguise:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :escape_artist_val, label: "Escape Artist:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :fly_val, label: "Fly:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :handle_animal_val, label: "Handle Animal:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :heal_val, label: "Heal:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :intimidate_val, label: "Intimidate:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :knowledge_arcana_val, label: "Knowledge Arcana:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :knowledge_dungeoneering_val, label: "Knowledge Dungeoneering:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :knowledge_engineering_val, label: "Knowledge Engineering:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :knowledge_geography_val, label: "Knowledge Geography:", as: :integer, wrapper_html: { class: 'input-field' }
-
-  = f.input :knowledge_history_val, label: "Knowledge History:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :knowledge_nature_val, label: "Knowledge Nature:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :knowledge_nobility_val, label: "Knowledge Nobility:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :knowledge_planes_val, label: "Knowledge Planes:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :knowledge_religion_val, label: "Knowledge Religion:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-
-  = f.input :linguistics_val, label: "Linguistics:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :perception_val, label: "Perception:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :perform_1_name, label: "Perform 1 Name:", wrapper_html: { class: 'input-field' }
-
-
-  = f.input :perform_1_val, label: "Perform 1 Value:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :perform_2_name, label: "Perform 2 Name:", wrapper_html: { class: 'input-field' }
-
-
-  = f.input :perform_2_val, label: "Perform 2 Value:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :perform_3_name, label: "Perform 3 Name:", wrapper_html: { class: 'input-field' }
-
-
-  = f.input :perform_3_val, label: "Perform 3 Value:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :profession_name_val, label: "Profession Name:", wrapper_html: { class: 'input-field' }
-
-
-  = f.input :profession_val, label: "Profession value:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :ride_val, label: "Ride:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :sense_motive_val, label: "Sense Motive:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :sleight_of_hand_val, label: "Sleight of Hand:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :sense_motive_val, label: "Sense Motive:", as: :integer, wrapper_html: { class: 'input-field' }
-
-
-  = f.input :spellcraft_val, label: "Spellcraft:", as: :integer, wrapper_html: { class: 'input-field' }
-  = f.input :stealth_val, label: "Stealth:", as: :integer, wrapper_html: { class: 'input-field' }
-  = f.input :survival_val, label: "Survival:", as: :integer, wrapper_html: { class: 'input-field' }
-  = f.input :swim_val, label: "Swim:", as: :integer, wrapper_html: { class: 'input-field' }
-  = f.input :use_magic_device_val, label: "Use Magic Device:", as: :integer, wrapper_html: { class: 'input-field' }
+  %p Custom Skills
+  - Skills::CUSTOM.keys.each do |sk|
+    - sk = sk.to_s
+    = f.input "#{sk}_name".to_sym, label: "#{sk.gsub('_', ' ').titleize} Name", as: :integer, wrapper_html: { class: 'input-field' }
+    = f.input "#{sk}_val".to_sym, label: "#{sk.gsub('_', ' ').titleize} Value", as: :integer, wrapper_html: { class: 'input-field' }
 
   = f.button :submit, "Update Character"
 

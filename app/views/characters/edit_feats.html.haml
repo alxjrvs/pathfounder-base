@@ -2,7 +2,7 @@
 
   - Feats.names.each do |feat|
     .width:100
-      = check_box_tag("[feat_list][list[#{feat}]", feat, false, { id: "list_#{feat}".tr(" ", "_"), class: "filled-in"} )
+      = check_box_tag("[feat_list][list[#{feat}]", feat, @character.feat_list.list.include?(feat), { id: "list_#{feat}".tr(" ", "_"), class: "filled-in"} )
       = label_tag("list_#{feat}".to_sym, feat )
   = submit_tag "Update Character", class: 'btn'
 

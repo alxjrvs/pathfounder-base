@@ -48,12 +48,12 @@ feature 'Character Display' do
       end
 
       scenario 'and sees their character\'s stats' do
-        expect(page).to have_content "STR: 18/4"
-        expect(page).to have_content "DEX: 12/1"
-        expect(page).to have_content "CON: 14/2"
-        expect(page).to have_content "WIS: 7/-2"
-        expect(page).to have_content "INT: 11/0"
-        expect(page).to have_content "CHA: 13/1"
+        expect(page).to have_content "Strength 18 4"
+        expect(page).to have_content "Dexterity 12 1"
+        expect(page).to have_content "Constitution 14 2"
+        expect(page).to have_content "Wisdom 7 -2"
+        expect(page).to have_content "Intelligence 11 0"
+        expect(page).to have_content "Charisma 13 1"
       end
     end
 
@@ -64,12 +64,12 @@ feature 'Character Display' do
         expect(page).to have_content "(No Name!)"
         expect(page).to have_content "(No Class!)"
         expect(page).to have_content "(No Race!)"
-        expect(page).to have_content "STR: 0/-5"
-        expect(page).to have_content "DEX: 0/-5"
-        expect(page).to have_content "CON: 0/-5"
-        expect(page).to have_content "WIS: 0/-5"
-        expect(page).to have_content "INT: 0/-5"
-        expect(page).to have_content "CHA: 0/-5"
+        expect(page).to have_content "Strength 0 -5"
+        expect(page).to have_content "Dexterity 0 -5"
+        expect(page).to have_content "Constitution 0 -5"
+        expect(page).to have_content "Wisdom 0 -5"
+        expect(page).to have_content "Intelligence 0 -5"
+        expect(page).to have_content "Charisma 0 -5"
         expect(page).to have_content "(No Skills!)"
         expect(page).to have_content "(No Feats!)"
       end

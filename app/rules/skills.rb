@@ -243,5 +243,7 @@ module Skills
     }
   }
 
+  STANDARD = DETAILS.select { |k, v| !v[:custom] }
+  CUSTOM  = DETAILS.select { |k, v| v[:custom] }
   ALL = DETAILS.keys
 end

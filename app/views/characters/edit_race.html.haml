@@ -1,10 +1,15 @@
 %h1 Choose Your Race!
-%ul
-  %li.card
-    %p Human
-    = form_tag update_race_character_path(@character), method: "post" do
-      = hidden_field_tag(:chosen_race, "human")
-      - dirty_array =  Stats::ALL.map { |s| [s.to_s.capitalize, s] }
-      .input-field
-        = select_tag :human_ability_bonus, options_for_select(dirty_array), class: "browser-default", prompt: "Choose your Human Ability Bonus Stat:"
-      = submit_tag "Become a Human!", class: 'btn'
+%ul.row
+  .col.m6.s12
+    %li.card
+      .card-content
+        %p.card-title Human
+        .card-action.row
+          = form_tag update_race_character_path(@character), method: "post" do
+            = hidden_field_tag(:chosen_race, "human")
+            - dirty_array =  Stats::ALL.map { |s| [s.to_s.capitalize, s] }
+            .input-field.col.m6.s12
+              = select_tag :human_ability_bonus, options_for_select(dirty_array), class: "browser-default", prompt: "Choose your Human Ability Bonus Stat:"
+            .col.m6.s12
+              = submit_tag "Become a Human!", class: 'btn margin-top:20'
+

@@ -1,9 +1,7 @@
 %h1 Choose your Race!
-%ul.collapsible.popout{"data-collapsible" => "accordian"}
-  %li
-    .collapsible-header
-      %p Fighter
-    .collapsible-body
-      = form_tag update_pf_class_character_path(@character), method: "post" do
-        = hidden_field_tag(:chosen_class, 'fighter')
-        = submit_tag "Become a Fighter!", class: 'btn'
+%ul
+  %li.card
+    %p Fighter
+    = form_tag update_pf_class_character_path(@character), method: "post" do
+      = hidden_field_tag(:chosen_class, 'fighter')
+      = submit_tag "Become a Fighter!", class: 'btn'

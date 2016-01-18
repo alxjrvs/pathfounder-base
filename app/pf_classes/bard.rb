@@ -17,12 +17,12 @@ class Bard < ActiveRecord::Base
   mods reflex_save:      2
 
   adds weapon_proficiency: [
-    :simple
-    :longsword
-    :rapier
-    :sap
-    :short_sword
-    :shortbow
+    :simple,
+    :longsword,
+    :rapier,
+    :sap,
+    :short_sword,
+    :shortbow,
   ]
 
   adds armor_proficiency: [:light]

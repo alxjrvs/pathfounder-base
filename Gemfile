@@ -16,6 +16,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'simple_form'
 gem 'materialize-sass'
 
+gem 'puma'
 
 group :development, :test do
   gem 'capybara'
@@ -23,6 +24,11 @@ group :development, :test do
   gem 'pry-remote'
   gem 'pry-rails'
   gem 'byebug'
+  gem 'dotenv'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 group :development do

@@ -1,4 +1,8 @@
-=simple_form_for @feat_list, url: update_feats_character_path(@character), method: 'post' do |f|
-  = f.input :list, as: :check_boxes, collection: Feats.names 
-  = f.button :submit, "Update Character"
+= form_tag update_feats_character_path(@character), method: "post" do
+
+  - Feats.names.each do |feat|
+    .width:100
+      = check_box_tag("[feat_list][list[#{feat}]", feat, false, { id: "list_#{feat}".tr(" ", "_"), class: "filled-in"} )
+      = label_tag("list_#{feat}".to_sym, feat )
+  = submit_tag "Update Character", class: 'btn'
 

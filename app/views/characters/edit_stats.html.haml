@@ -1,9 +1,13 @@
 = simple_form_for @stat_block, url: update_stats_character_path(@character), method: "post" do |f|
-  = f.input :strength_val, label: "Strength:", as: :integer
-  = f.input :dexterity_val, label: "Dexterity:", as: :integer
-  = f.input :constitution_val, label: "Constitution:", as: :integer
-  = f.input :wisdom_val, label: "Wisdom:", as: :integer
-  = f.input :intelligence_val, label: "Intelligence:", as: :integer
-  = f.input :charisma_val, label: "Charisma:", as: :integer
+  .row
+    .col.m6.s12
+      .col.m6.s12
+        = f.input :strength_val, label: "Strength:", as: :integer, wrapper_html: { class: "input-field" }
+        = f.input :dexterity_val, label: "Dexterity:", as: :integer, wrapper_html: { class: "input-field" }
+        = f.input :constitution_val, label: "Constitution:", as: :integer, wrapper_html: { class: "input-field" }
+      .col.m6.s12
+        = f.input :wisdom_val, label: "Wisdom:", as: :integer, wrapper_html: { class: "input-field" }
+        = f.input :intelligence_val, label: "Intelligence:", as: :integer, wrapper_html: { class: "input-field" }
+        = f.input :charisma_val, label: "Charisma:", as: :integer, wrapper_html: { class: "input-field" }
 
   = f.button :submit, "Update Character"

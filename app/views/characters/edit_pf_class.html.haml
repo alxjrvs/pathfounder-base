@@ -1,7 +1,12 @@
-%h1 Choose your Race!
-%ul
-  %li.card
-    %p Fighter
-    = form_tag update_pf_class_character_path(@character), method: "post" do
-      = hidden_field_tag(:chosen_class, 'fighter')
-      = submit_tag "Become a Fighter!", class: 'btn'
+%h1 Choose your Class!
+%ul.row
+  .col.m6.s12
+    %li.card
+      .card-content
+        %p.card-title Fighter
+        %p The Figher is a master of physical and armed combat. 
+      .card-action
+      
+        = form_tag update_pf_class_character_path(@character), method: "post" do
+          = hidden_field_tag(:chosen_class, 'fighter')
+          = submit_tag "Become a Fighter!", class: 'btn'

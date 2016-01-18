@@ -94,9 +94,8 @@ class CharactersController < ApplicationController
   end
 
   def new_list_params
-    params["feat_list"]["list"].compact
+    params["feat_list"]["list"].compact.keys
   end
-
 
   def skill_list_params
     params.require(:skill_list).permit(

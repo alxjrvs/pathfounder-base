@@ -7,7 +7,7 @@ class Rogue < ActiveRecord::Base
   hit_die 8
   alignment :any
 
-  class_skills :climb, :craft, :handle_animal :disable_device
+  class_skills :climb, :craft, :handle_animal, :disable_device
   skill_ranks_per_level 8
 
   base_attack_bonus      0
@@ -20,7 +20,7 @@ class Rogue < ActiveRecord::Base
     :rapier,
     :sap,
     :shortbow,
-    :short_sword
+    :short_sword,
     ]
   adds armor_proficiency: [:light]
   adds shield_proficiency: [:none]

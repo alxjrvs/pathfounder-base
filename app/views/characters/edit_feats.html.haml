@@ -1,5 +1,4 @@
 = form_tag update_feats_character_path(@character), method: "post" do
-
   - Feats.names.each do |feat|
     .width:100
       = check_box_tag("[feat_list][list[#{feat}]", feat, @character.feat_list.list.include?(feat), { id: "list_#{feat}".tr(" ", "_"), class: "filled-in"} )

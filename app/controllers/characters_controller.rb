@@ -94,7 +94,9 @@ class CharactersController < ApplicationController
   end
 
   def new_list_params
-    params["feat_list"]["list"].compact.keys
+    list =  params["feat_list"]["list"].compact
+    return list.keys if list.is_a? Hash
+    list
   end
 
   def skill_list_params

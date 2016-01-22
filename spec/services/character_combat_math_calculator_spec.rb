@@ -39,6 +39,12 @@ describe CharacterCombatMathCalculator do
     end
   end
 
+  describe ".touch_ac" do
+    it "calculates the touch_ac correctly" do
+      expect(combat.touch_ac).to eq 11
+    end
+  end
+
   describe "#armor_class" do
     it "calculates the armor_class correctly" do
       expect(combat.armor_class).to eq 11

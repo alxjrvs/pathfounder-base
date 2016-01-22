@@ -25,15 +25,21 @@ feature 'Character Display' do
       end
 
       scenario 'and sees their character\'s name.' do
-        expect(page).to have_content name
+        within "#header" do
+          expect(page).to have_content name
+        end
       end
 
       scenario 'and sees their character\'s class.' do
-        expect(page).to have_content "Fighter"
+        within "#header" do
+          expect(page).to have_content "Fighter"
+        end
       end
 
       scenario 'and sees their character\'s race.' do
-        expect(page).to have_content "Human"
+        within "#header" do
+          expect(page).to have_content "Human"
+        end
       end
 
       scenario 'and sees the name on the show page' do

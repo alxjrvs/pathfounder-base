@@ -33,6 +33,12 @@ class CharacterCombatMathCalculator
     10
   end
 
+  def touch_ac
+    touch_bonus + 
+    dex_mod +
+    10
+  end
+
   def flat_footed
     flat_footed_bonus +
     armor_bonus +
@@ -43,6 +49,10 @@ class CharacterCombatMathCalculator
   private
 
   attr_reader :mods, :stats, :base_attack_bonus, :armor_bonus, :shield_bonus, :size_modifier
+  
+  def touch_bonus
+    mods_bonus_for :touch_ac
+  end
 
   def flat_footed_bonus
     mods_bonus_for :flat_footed

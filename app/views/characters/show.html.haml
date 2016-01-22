@@ -2,82 +2,190 @@
 - pf_class = @character.sheet.favored_class.present? ? @character.sheet.favored_class.class.to_s.titleize : "(No Class!)"
 - race = @character.sheet.race.present? ? @character.sheet.race.class.to_s.titleize : "(No Race!)"
 
-.character-display.row.width:85
-  .avatar-photo.col.m4.s12.height:100
-    test
-  .basic-info.col.m8.s12.align:center
-    .title.row
-      %p.name.col.m6.s12= name
-      %p.col.m1.s2 the
-      %P.col.m2.s10= race 
-      %p.col.m3.s12= pf_class
-    .subtitle.row
-      %p.name.col.m6.s12= "Level 1 - alignment goes here" 
+.static-column.col.m4.s12
+  .static-info
+    #info.card
+      .title
+        %span#name.card-title= name
+      .card-content
+        .class-race
+          %span.race= race 
+          %span.class= pf_class
 
-  .stats.row
-    .col.s12.m3
-      %table.striped
-        %tbody
-          %tr
-            %th Ability
-            %th Value
-            %th Modifier
-          %tr#strength-stat
-            %td.name Strength
-            %td.value= @character.sheet.stats.strength.value
-            %td.modifier= @character.sheet.stats.strength.modifier
-          %tr#dexterity-stat
-            %td.name Dexterity
-            %td.value= @character.sheet.stats.dexterity.value
-            %td.modifier= @character.sheet.stats.dexterity.modifier
-          %tr#constitution-stat
-            %td.name Constitution
-            %td.value= @character.sheet.stats.constitution.value
-            %td.modifier= @character.sheet.stats.constitution.modifier
-          %tr#wisdom-stat
-            %td.name Wisdom
-            %td.value= @character.sheet.stats.wisdom.value
-            %td.modifier= @character.sheet.stats.wisdom.modifier
-          %tr#intelligence-stat
-            %td.name Intelligence
-            %td.value= @character.sheet.stats.intelligence.value
-            %td.modifier= @character.sheet.stats.intelligence.modifier
-          %tr#charisma-stat
-            %td.name Charisma
-            %td.value= @character.sheet.stats.charisma.value
-            %td.modifier= @character.sheet.stats.charisma.modifier
+    .info-block.row
+      .speed-container.col.m4.s12
+        .speed.card
+          .caption
+            SPEED
+          = @character.sheet.speed 
 
-  .skills.row
-    .col.s12.m6
-      - if @character.skill_list.present?
-        %table.striped
-          %tbody
-            - Skills::ALL.each do |skill|
-              - skill = @character.sheet.skills.send(skill)
-              - if skill.point_value > 0
-                %tr
-                  %td= "#{skill.name.to_s.titleize}: #{skill.point_value}" 
+      .level-container.col.m4.s12
+        .level.card
+          .caption
+            LEVEL
+          1
+
+      .health-container.col.m4.s12
+        .health.card
+          .caption
+            HP
+          = @character.sheet.hit_die
+
+    .stat-block.row
+      .stats.right.col.m6.s12
+        .stat.card#strength
+          .caption
+            STRENGTH
+          .stat-line.row
+            .stat-display.sub-caption.value.col.m6.s6
+              = @character.sheet.stats.strength.value
+            .stat-display.sub-caption.modifier.col.m6.s6
+              = @character.sheet.stats.strength.modifier
+        .stat.card#dexterity
+          .caption
+            DEXTERITIY
+          .stat-line.row
+            .stat-display.sub-caption.value.col.m6.s6
+              = @character.sheet.stats.dexterity.value
+            .stat-display.sub-caption.modifier.col.m6.s6
+              = @character.sheet.stats.dexterity.modifier
+        .stat.card#constitution
+          .caption
+            CONSTITUTION
+          .stat-line.row
+            .stat-display.sub-caption.value.col.m6.s6
+              = @character.sheet.stats.constitution.value
+            .stat-display.sub-caption.modifier.col.m6.s6
+              = @character.sheet.stats.constitution.modifier
+      .stats.left.col.m6.s12
+        .stat.card#wisdom
+          .caption
+            WISDOM
+          .stat-line.row
+            .stat-display.sub-caption.value.col.m6.s6
+              = @character.sheet.stats.wisdom.value
+            .stat-display.sub-caption.modifier.col.m6.s6
+              = @character.sheet.stats.wisdom.modifier
+        .stat.card#intelligence
+          .caption
+            INTELLIGENCE
+          .stat-line.row
+            .stat-display.sub-caption.value.col.m6.s6
+              = @character.sheet.stats.intelligence.value
+            .stat-display.sub-caption.modifier.col.m6.s6
+              = @character.sheet.stats.intelligence.modifier
+        .stat.card#charisma
+          .caption
+            CHARISMA
+          .stat-line.row
+            .stat-display.sub-caption.value.col.m6.s6
+              = @character.sheet.stats.charisma.value
+            .stat-display.sub-caption.modifier.col.m6.s6
+              = @character.sheet.stats.charisma.modifier
+
+    .extra-info-container.row
+      .size-container.col.s12
+        .size.card
+          .caption
+            SIZE
+          = @character.sheet.size
+      .alignment-container.col.s12
+        .alignment.card
+          .caption
+            ALIGNMENT
+          Chaotic Neutral
+
+.dynamic-column.col.m8.s12
+  #attacking.row
+    .section-header
+      ATTACKING
+    .initiative-container.col.m3.s12
+      .initiative.card
+        .caption
+          INITIATIVE BONUSES
+        .stat-line.row
+          .stat-display.initiative-bonus.col.s12
+            = @character.sheet.combat.initiative_modifier
+    .attack-bonus-container.col.m9.s12
+      .attack-bonus.card
+        .caption
+          ATTACK BONUSES
+        .stat-line.row
+          .stat-display.sub-caption.base-attack-bonus.col.m4.s12
+            = @character.sheet.base_attack_bonus
+          .stat-display.sub-caption.melee-attack-bonus.col.m4.s12
+            = @character.sheet.combat.melee_attack_bonus
+          .stat-display.sub-caption.ranged-attack-bonus.col.m4.s12
+            = @character.sheet.combat.ranged_attack_bonus
+
+        
+  #defending.row
+    .section-header
+      DEFENDING
+    .ac-container.col.m6.s12
+      .ac.card
+        .caption
+          AC
+        .stat-line.row
+          .stat-display.sub-caption.base-ac.col.m4.s12
+            = @character.sheet.combat.armor_class
+          .stat-display.sub-caption.touch-ac.col.m4.s12
+            = @character.sheet.combat.touch_ac
+          .stat-display.sub-caption.flat-footed-ac.col.m4.s12
+            = @character.sheet.combat.flat_footed
+    .saves-container.col.m6.s12
+      .saves.card
+        .caption
+          SAVES
+        .stat-line.row
+          .stat-display.sub-caption.fortitude_save.col.m4.s12
+            = @character.sheet.fortitude_save
+          .stat-display.sub-caption.reflex_save.col.m4.s12
+            = @character.sheet.reflex_save
+          .stat-display.sub-caption.will_save.col.m4.s12
+            = @character.sheet.will_save
+  #interactions.row
+    .section-header
+      INTERACTIONS
 
 
-      - else
-        (No Skills!)
-
-    .feats.row
-      .col.m12
-        - if @character.feat_list&.list&.count.to_i > 0 
-          %table.striped
-            %tbody
-              - @character.feat_list.list.each do |feat|
-                %tr
-                  %td= "#{feat}" 
-        - else
-          (No Feats!)
+  #edits.row
+    .section-header
+      EDITS
+    = link_to "Edit Character Info", edit_general_info_character_path(@character), class: "waves-effect waves-light btn"
+    = link_to "Edit Class", edit_pf_class_character_path(@character), class: "waves-effect waves-light btn"
+    = link_to "Edit Race", edit_race_character_path(@character), class: "waves-effect waves-light btn"
+    = link_to "Edit Stats", edit_stats_character_path(@character), class: "waves-effect waves-light btn"
+    = link_to "Edit Skills", edit_skills_character_path(@character), class: "waves-effect waves-light btn"
+    = link_to "Edit Feats", edit_feats_character_path(@character), class: "waves-effect waves-light btn"
+    = link_to "Edit Items", edit_items_character_path(@character), class: "waves-effect waves-light btn"
 
 
-= link_to "Edit Character Info", edit_general_info_character_path(@character), class: "waves-effect waves-light btn"
-= link_to "Edit Class", edit_pf_class_character_path(@character), class: "waves-effect waves-light btn"
-= link_to "Edit Race", edit_race_character_path(@character), class: "waves-effect waves-light btn"
-= link_to "Edit Stats", edit_stats_character_path(@character), class: "waves-effect waves-light btn"
-= link_to "Edit Skills", edit_skills_character_path(@character), class: "waves-effect waves-light btn"
-= link_to "Edit Feats", edit_feats_character_path(@character), class: "waves-effect waves-light btn"
-= link_to "Edit Items", edit_items_character_path(@character), class: "waves-effect waves-light btn"
+
+-#   .skills.row
+-#     .col.s12.m6
+-#       - if @character.skill_list.present?
+-#         %table.striped
+-#           %tbody
+-#             - Skills::ALL.each do |skill|
+-#               - skill = @character.sheet.stats.skills.send(skill)
+-#               - if skill.point_value > 0
+-#                 %tr
+-#                   %td= "#{skill.name.to_s.titleize}: #{skill.point_value}" 
+
+
+-#       - else
+-#         (No Skills!)
+
+-#     .feats.row
+-#       .col.m12
+-#         - if @character.feat_list&.list&.count.to_i > 0 
+-#           %table.striped
+-#             %tbody
+-#               - @character.feat_list.list.each do |feat|
+-#                 %tr
+-#                   %td= "#{feat}" 
+-#         - else
+-#           (No Feats!)
+
+

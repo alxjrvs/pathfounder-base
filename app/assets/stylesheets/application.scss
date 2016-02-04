@@ -138,9 +138,9 @@ body {
 .sub-caption::after { 
   font-size: 10px;
   display: block;
-  background: $primary-color-dark;
+  background: $secondary-color;
   padding: 0;
-  color: $primary-text-color;
+  color: $secondary-text-color;
   margin-top: 0;
 }
 
